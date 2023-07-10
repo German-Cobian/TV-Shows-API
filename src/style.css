@@ -1,4 +1,32 @@
-.hello {
-  color: red;
-  background: url('./icon.png');
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: MidnightBlue;
+}
+
+#collage {
+  margin-top: 3%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+  border: 2px solid black;
+  background-color: MidnightBlue;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
+.footer-content {
+  margin-right: 5%;
+}
+
+.white-text {
+  color: white;
 }
