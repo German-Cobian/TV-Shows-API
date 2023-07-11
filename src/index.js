@@ -40,6 +40,13 @@ const updateTvShowsCount = (count) => {
   tvShowsTitle.innerText = `Tv Shows in this Category: (${count})`;
 };
 
+// Reload the page for a new search
+
+const reloadWindow = document.getElementById('reload');
+reloadWindow.addEventListener('click', () => {
+  window.location.reload();
+});
+
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
