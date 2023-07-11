@@ -15,6 +15,7 @@ const getTvShows = async (searchString) => {
   const results = await fetch(`${URL}`);
   const tvShows = await results.json();
   console.log(tvShows);
+  displayTvShows(tvShows);
 };
 
 // Search bar
@@ -25,4 +26,25 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   searchString.toLowerCase();
   getTvShows(searchString);
   console.log(searchString);
+  const landingPage = document.getElementById('tv-shows-info');
+  landingPage.style.display = 'none';
 });
+
+// Display Collection
+
+const displayTvShows = async (collectionArray) => {
+  const tvShowsList = document.getElementById('tv-shows-listing');
+  collectionArray.forEach((tvShow) => {
+    tvShowsList.insertAdjacentHTML('beforeend', ` 
+      <div class="tv-shows-container">
+        <div class="">
+          <img src="${tvShow.show.image.medium}" />
+        </div>
+        <div>
+          <h6>${tvShow.show.id}</h6>
+          <h6>${tvShow.show.name}</h6>
+        </div>
+      </div> 
+    `);
+  });
+};
