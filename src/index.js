@@ -30,6 +30,16 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   landingPage.style.display = 'none';
 });
 
+const countTvShows = () => {
+  const tvShowsCount = document.getElementById('tv-shows-listing').children.length;
+  return tvShowsCount;
+};
+
+const updateTvShowsCount = (count) => {
+  const tvShowsTitle = document.getElementById('by-category-shows');
+  tvShowsTitle.innerText = `Tv Shows in this Category: (${count})`;
+};
+
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
@@ -50,4 +60,6 @@ const displayTvShows = async (collectionArray, searchString) => {
       </div> 
     `);
   });
+  const count = countTvShows();
+  updateTvShowsCount(count);
 };
