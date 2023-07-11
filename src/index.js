@@ -15,7 +15,7 @@ const getTvShows = async (searchString) => {
   const results = await fetch(`${URL}`);
   const tvShows = await results.json();
   console.log(tvShows);
-  displayTvShows(tvShows);
+  displayTvShows(tvShows, searchString);
 };
 
 // Search bar
@@ -32,7 +32,10 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
 
 // Display Collection
 
-const displayTvShows = async (collectionArray) => {
+const displayTvShows = async (collectionArray, searchString) => {
+  const tvShowsCategory = document.getElementById('tv-shows-category');
+  console.log(searchString);
+  tvShowsCategory.innerHTML = `<h3>${searchString}</h3>`;
   const tvShowsList = document.getElementById('tv-shows-listing');
   collectionArray.forEach((tvShow) => {
     tvShowsList.insertAdjacentHTML('beforeend', ` 
