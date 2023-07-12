@@ -1,6 +1,11 @@
+/* eslint-disable no-unused-vars */
 import './style.css';
 import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
+import { countTvShows, updateTvShowsCount } from './count.js';
+import reloadWindow from './reload.js';
+
+// Make img files available to the app
 
 const logo = document.getElementById('logo');
 logo.src = Logo;
@@ -8,13 +13,12 @@ logo.src = Logo;
 const collage = document.getElementById('collage');
 collage.src = Collage;
 
-// Tv-shows API calls
+// Search for tv-shows by keyword
 
 const getTvShows = async (searchString) => {
   const URL = `https://api.tvmaze.com/search/shows?q=${searchString}`;
   const results = await fetch(`${URL}`);
   const tvShows = await results.json();
-  console.log(tvShows);
   displayTvShows(tvShows, searchString);
 };
 
@@ -25,33 +29,14 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   const searchString = document.getElementById('search-category').value;
   searchString.toLowerCase();
   getTvShows(searchString);
-  console.log(searchString);
   const landingPage = document.getElementById('tv-shows-info');
   landingPage.style.display = 'none';
-});
-
-const countTvShows = () => {
-  const tvShowsCount = document.getElementById('tv-shows-listing').children.length;
-  return tvShowsCount;
-};
-
-const updateTvShowsCount = (count) => {
-  const tvShowsTitle = document.getElementById('by-category-shows');
-  tvShowsTitle.innerText = `Tv Shows in this Category: (${count})`;
-};
-
-// Reload the page for a new search
-
-const reloadWindow = document.getElementById('reload');
-reloadWindow.addEventListener('click', () => {
-  window.location.reload();
 });
 
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
   const tvShowsCategory = document.getElementById('tv-shows-category');
-  console.log(searchString);
   tvShowsCategory.innerHTML = `<h3>${searchString}</h3>`;
   const tvShowsList = document.getElementById('tv-shows-listing');
   collectionArray.forEach((tvShow) => {
