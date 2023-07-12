@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars no-use-before-define */
 import './style.css';
 import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
