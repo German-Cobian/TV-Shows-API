@@ -39,11 +39,13 @@ const displayTvShowDetails = (tvShow) => {
           <h6>Ended: <span>${tvShow.ended}</span></h6>
         </div>
         <div>
-          <button id="close-window" class="btn-close" onclick="closeTvShowDetails()" >Close Window</button>
+          <button id="close-window" class="btn-close" >Close Window</button>
         </div>
       </div>
     <div>
   `;
+  const closeButton = document.getElementById('close-window');
+  closeButton.addEventListener('click', closeTvShowDetails);
 };
 
 export default findTvShowById;
