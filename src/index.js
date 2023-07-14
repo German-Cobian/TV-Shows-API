@@ -61,3 +61,9 @@ const displayTvShows = async (collectionArray, searchString) => {
   const count = countTvShows();
   updateTvShowsCount(count);
 };
+
+fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
+  method: 'POST',
+}).then(response => response.text()).then(response => console.log(response));
+
+// response (app code): LO9gluM6sh4CT4MBVKTJ
