@@ -3,6 +3,7 @@ import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
 import { countTvShows, updateTvShowsCount } from './count.js';
 import reloadWindow from './reload.js';
+import findTvShowById from './tvShowDetails';
 
 // Make img files available to the app
 
@@ -48,8 +49,14 @@ const displayTvShows = async (collectionArray, searchString) => {
           <h6>${tvShow.show.id}</h6>
           <h6>${tvShow.show.name}</h6>
         </div>
+        <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
       </div> 
     `);
+    const detailsButton = document.querySelectorAll(`[data-id="${tvShow.show.id}"]`)[0];
+    detailsButton.addEventListener('click', (e) => {
+      const tvShowId = e.target.getAttribute('data-id');
+      findTvShowById(tvShowId);
+    });
   });
   const count = countTvShows();
   updateTvShowsCount(count);
