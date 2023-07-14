@@ -3,13 +3,19 @@
 const findTvShowById = async (id) => {
   const result = await fetch(`https://api.tvmaze.com/shows/${id}`);
   const tvShow = await result.json();
-  console.log(tvShow);
   displayTvShowDetails(tvShow);
 };
 
-const displayTvShowDetails = async (tvShow) => {
+// Display Tv-Show details
+
+const closeTvShowDetails = () => {
+  const popup = document.getElementById('tv-show-details');
+  popup.style.display = 'none';
+};
+
+// eslint-disable-next-line no-var
+const displayTvShowDetails = (tvShow) => {
   const tvShowInfo = document.getElementById('tv-show-details');
-  console.log(tvShow.image.medium);
   tvShowInfo.classList.add('popup-container');
   tvShowInfo.innerHTML = ` 
     <div class="tv-show-details-container">
@@ -31,6 +37,9 @@ const displayTvShowDetails = async (tvShow) => {
         <div class="details">
           <h6>Premiered: <span>${tvShow.premiered}</span></h6>
           <h6>Ended: <span>${tvShow.ended}</span></h6>
+        </div>
+        <div>
+          <button id="close-window" class="btn-close" onclick="closeTvShowDetails()" >Close Window</button>
         </div>
       </div>
     <div>
