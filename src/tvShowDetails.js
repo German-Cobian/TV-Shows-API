@@ -51,27 +51,26 @@ const displayTvShowDetails = async (tvShow) => {
   tvShowInfo.classList.add('popup-container');
   tvShowInfo.innerHTML = ` 
     <div class="tv-show-details-container">
-      <div class="">
+      <div class="show-img">
         <img src="${tvShow.image.medium}" />
       </div>
       <div>
-        <h6>${tvShow.id}</h6>
-        <h4>${tvShow.name}</h4>
-        <div class="details">
-          <h6 class="detail-m-r">Network: <span>${tvShow.network.name}</span></h6>
+        <div class="details-header">
+          <h2>${tvShow.name}</h2>
           <h6>Genre: <span>${tvShow.genres}</span></h6>
         </div>
         <div class="details">
-          <h6 class="detail-m-r">Language: <span>${tvShow.language}</span></h6>
+          <h6 >Language: <span>${tvShow.language}</span></h6>
+          <h6>Network: <span>${tvShow.network.name}</span></h6>
           <h6>Rating: <span>${tvShow.rating.average}</span></h6>
         </div>
         <h6>Summary: <span>${tvShow.summary}</span></h6>
         <div class="details">
-          <h6 class="detail-m-r">Premiered: <span>${tvShow.premiered}</span></h6>
+          <h6>Premiered: <span>${tvShow.premiered}</span></h6>
           <h6>Ended: <span>${tvShow.ended}</span></h6>
         </div>
         <div class="comments-generate" ></div>
-        <div>
+        <div class="details-close">
           <button id="close-window" class="btn-close" >Close Window</button>
         </div>
       </div>
@@ -80,16 +79,16 @@ const displayTvShowDetails = async (tvShow) => {
   const commentsContent = document.querySelector('.comments-generate');
   commentsContent.innerHTML = `
     <div class="">
-      <div class="">
-        <h4 class="">Comments:<span class="comments-counter"></span></h4>
+      <div>
+        <h4>Comments:<span class="comments-counter"></span></h4>
         <div class="comments-data"></div>
       </div>          
     </div>
     <div class="">
     <form id="post-comment" action="">
-      <label for="name">Name:</label><br>
+      <label for="name" class="c-font">Name:</label><br>
       <input id="name" type="text" name="fname" required><br>
-      <label for="comment">Comment:</label></br>
+      <label for="comment" class="c-font">Comment:</label></br>
       <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" required></textarea></br>
       <input id="comment-btn" class="btn-comment" type="submit" value="Submit">
     </form> 

@@ -6,7 +6,10 @@
   background-color: midnightblue;
 }
 
-#collage {
+#tv-shows-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-top: 3%;
 }
 
@@ -45,8 +48,8 @@
 
 .icon-likes {
   border-radius: 10%;
-  background-color: indianred;
-  color: white;
+  background-color: white;
+  color: red;
   padding: 5px;
 }
 
@@ -69,26 +72,55 @@
   padding: 5% 10% 5% 10%;
 }
 
+.show-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.details-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .details {
   display: flex;
   flex-direction: row;
-}
-
-.detail-m-r {
-  margin-right: 25%;
+  justify-content: space-around;
 }
 
 .btn-details,
-.btn-close,
-.btn-comment {
-  border-radius: 10%;
-  background-color: blue;
+.btn-close {
+  border-radius: 15%;
+  background-color: midnightblue;
   color: white;
-  padding: 5px;
+  padding: 7px;
+}
+
+.btn-comment,
+.btn-reload {
+  margin-top: 2%;
+  border-radius: 15%;
+  background-color: white;
+  border-color: blue;
+  color: blue;
+  padding: 7px;
 }
 
 .comments-font {
   font-size: 12px;
+}
+
+.c-font {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.details-close {
+  display:flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 footer {
@@ -106,13 +138,6 @@ footer {
 
 .footer-content {
   margin-right: 5%;
-}
-
-.btn-reload {
-  border-radius: 10%;
-  background-color: white;
-  color: blue;
-  padding: 10px;
 }
 
 .white-text {
