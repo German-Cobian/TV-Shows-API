@@ -106,6 +106,7 @@ const displayTvShowDetails = async (tvShow) => {
     document.getElementById('post-comment').reset();
   });
   const commentsData = document.querySelector('.comments-data');
+  // eslint-disable-next-line prefer-destructuring
   const id = tvShow.id;
   const comments = await getComments(id);
   comments.forEach((comment) => {
