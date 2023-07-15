@@ -33,6 +33,26 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   landingPage.style.display = 'none';
 });
 
+// Likes API's calls
+
+const AppCode = 'LO9gluM6sh4CT4MBVKTJ';
+const likesURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${AppCode}/likes`;
+
+const addLike = async (id) => {
+  const likeBody = {
+    item_id: id,
+  };
+
+  const response = await fetch(likesURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(likeBody),
+  });
+  return response.status;
+};
+
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
@@ -46,16 +66,25 @@ const displayTvShows = async (collectionArray, searchString) => {
           <img src="${tvShow.show.image.medium}" />
         </div>
         <div>
-          <h6>${tvShow.show.id}</h6>
-          <h6>${tvShow.show.name}</h6>
+          <h4 class="show-name">${tvShow.show.name}</h4>
         </div>
-        <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
+        <div class="btn-container">
+          <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
+          <button like-id="${tvShow.show.id}" class="icon-likes"><i class="fas fa-heart"></i></button>
+        </div>
       </div> 
     `);
     const detailsButton = document.querySelectorAll(`[data-id="${tvShow.show.id}"]`)[0];
     detailsButton.addEventListener('click', (e) => {
       const tvShowId = e.target.getAttribute('data-id');
       findTvShowById(tvShowId);
+    });
+    const likeButton = document.querySelectorAll(`[like-id="${tvShow.show.id}"]`)[0];
+    likeButton.addEventListener('click', async (e) => {
+      const tvShowId = e.target.parentElement.getAttribute('like-id');
+      console.log(tvShowId);
+      const status = await addLike(tvShowId);
+      console.log(status);
     });
   });
   const count = countTvShows();
