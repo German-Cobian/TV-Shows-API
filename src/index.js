@@ -3,7 +3,7 @@ import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
 import { countTvShows, updateTvShowsCount } from './count.js';
 import reloadWindow from './reload.js';
-import findTvShowById from './tvShowDetails';
+import findTvShowById from './tvShowDetails.js';
 
 // Make img files available to the app
 

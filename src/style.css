@@ -48,24 +48,29 @@
 }
 
 .tv-show-details-container {
-  padding: 20px;
+  padding: 5% 10% 5% 10%;
 }
 
 .details {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-left: 50px;
-  margin-right: 50px;
+}
+
+.detail-m-r {
+  margin-right: 25%;
 }
 
 .btn-details,
-.btn-close {
+.btn-close,
+.btn-comment {
   border-radius: 10%;
   background-color: blue;
   color: white;
-  margin: 15px;
   padding: 5px;
+}
+
+.comments-font {
+  font-size: 12px;
 }
 
 footer {
