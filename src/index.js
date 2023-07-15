@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import './style.css';
 import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
@@ -33,7 +34,7 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   landingPage.style.display = 'none';
 });
 
-// Likes API's calls
+// Likes API's calls and counter
 
 const AppCode = 'LO9gluM6sh4CT4MBVKTJ';
 const likesURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${AppCode}/likes`;
