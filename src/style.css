@@ -32,6 +32,24 @@
   border: 2px solid black;
 }
 
+.name-likes {
+  margin-left: 10%;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 10% 5% 10%;
+}
+
+.icon-likes {
+  border-radius: 10%;
+  background-color: indianred;
+  color: white;
+  padding: 5px;
+}
+
 .popup-container {
   margin: 0;
   padding: 0;

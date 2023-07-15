@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import './style.css';
 import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
@@ -33,29 +34,89 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   landingPage.style.display = 'none';
 });
 
+// Likes API's calls and counter
+
+const AppCode = 'LO9gluM6sh4CT4MBVKTJ';
+const likesURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${AppCode}/likes`;
+
+const addLike = async (id) => {
+  const likeBody = {
+    item_id: id,
+  };
+
+  const response = await fetch(likesURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(likeBody),
+  });
+  return response.status;
+};
+
+const getLikes = async () => {
+  const result = await fetch(likesURL);
+  const likes = await result.json();
+
+  if (likes.error?.status === 500 || likes.error?.status === 400) {
+    return [];
+  }
+  return likes;
+};
+
+const likeCounter = (likeObject) => {
+  const likesShowNum = likeObject[0].likes;
+  return likesShowNum;
+};
+
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
+  const likes = await getLikes();
+
   const tvShowsCategory = document.getElementById('tv-shows-category');
   tvShowsCategory.innerHTML = `<h3>${searchString}</h3>`;
   const tvShowsList = document.getElementById('tv-shows-listing');
   collectionArray.forEach((tvShow) => {
+    const likeObject = likes.filter((like) => like.item_id == tvShow.show.id);
+    let numberOfLikes = '';
+    if (likeObject.length > 0) {
+      numberOfLikes = `${likeCounter(likeObject)} likes`;
+    } else {
+      numberOfLikes = '0 likes';
+    }
+
     tvShowsList.insertAdjacentHTML('beforeend', ` 
       <div class="tv-shows-container">
         <div class="">
           <img src="${tvShow.show.image.medium}" />
         </div>
-        <div>
-          <h6>${tvShow.show.id}</h6>
-          <h6>${tvShow.show.name}</h6>
+        <div class="name-likes">
+          <h4>${tvShow.show.name}</h4>
+          <h6>${numberOfLikes}</h6>
         </div>
-        <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
+        <div class="btn-container">
+          <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
+          <button like-id="${tvShow.show.id}" class="icon-likes"><i class="fas fa-heart"></i></button>
+        </div>
       </div> 
     `);
     const detailsButton = document.querySelectorAll(`[data-id="${tvShow.show.id}"]`)[0];
     detailsButton.addEventListener('click', (e) => {
       const tvShowId = e.target.getAttribute('data-id');
       findTvShowById(tvShowId);
+    });
+    const likeButton = document.querySelectorAll(`[like-id="${tvShow.show.id}"]`)[0];
+    likeButton.addEventListener('click', async (e) => {
+      const tvShowId = e.target.parentElement.getAttribute('like-id');
+      const status = await addLike(tvShowId);
+      const addedLikes = await getLikes();
+      const likesObject = addedLikes.filter((like) => like.item_id === tvShowId);
+      const numberOfLikes = `${likesObject[0].likes} likes`;
+      if (status === 201) {
+        const likeDisplay = likeButton.parentElement.previousElementSibling.children[1];
+        likeDisplay.innerText = numberOfLikes;
+      }
     });
   });
   const count = countTvShows();
