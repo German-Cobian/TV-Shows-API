@@ -2,7 +2,7 @@
 import './style.css';
 import Logo from '../assets/Tv-shows-icon.png';
 import Collage from '../assets/Tv-shows-collage.png';
-import { countTvShows, updateTvShowsCount } from './count.js';
+import { countTvShows, updateTvShowsCount, likeCounter } from './count.js';
 import reloadWindow from './reload.js';
 import findTvShowById from './tvShowDetails.js';
 
@@ -34,7 +34,7 @@ document.getElementById('search-bar').addEventListener('submit', (e) => {
   landingPage.style.display = 'none';
 });
 
-// Likes API's calls and counter
+// Likes API's calls
 
 const AppCode = 'LO9gluM6sh4CT4MBVKTJ';
 const likesURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${AppCode}/likes`;
@@ -62,11 +62,6 @@ const getLikes = async () => {
     return [];
   }
   return likes;
-};
-
-const likeCounter = (likeObject) => {
-  const likesShowNum = likeObject[0].likes;
-  return likesShowNum;
 };
 
 // Display Collection

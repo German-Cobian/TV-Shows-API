@@ -10,4 +10,9 @@ const updateTvShowsCount = (count) => {
   tvShowsTitle.innerText = `Tv Shows in this Category: (${count})`;
 };
 
-export { countTvShows, updateTvShowsCount };
+const likeCounter = (likeObject) => {
+  const likesShowNum = likeObject[0].likes;
+  return likesShowNum;
+};
+
+export { countTvShows, updateTvShowsCount, likeCounter };
