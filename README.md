@@ -7,25 +7,27 @@ This Javascript app fetches Tv-shows from the TvMaze API.
 
 From the home page the user can input a term related to the Tv-show that they are searching for (could be the full name or part of the name of the Tv-show): 
 
-![Homepage](/assets/for-presentation/Initial-and-search-for.png?raw=true "Homepage")
+![Homepage](/assets/for-presentation/Homepage.png?raw=true "Homepage")
 
 The app will then render a listing of all the tv shows that match the search criteria, displaying their image as well as their name.
 
-![Listing pre-likes](/assets/for-presentation/List-pre-likes.png?raw=true "Artworks listing pre-likes")
+![Listing pre-likes](/assets/for-presentation/Tv-shows-listing-pre-likes.png?raw=true "Tv-Show listing pre-likes")
 
-The user can the input "likes" on the Tv-show of his/her choice. 
+The user can the input "likes" on the Tv-show of his/her choice.
+
+![Listing liked](/assets/for-presentation/Tv-shows-listing-liked.png?raw=true "Tv-Show listing liked")
 
 The comment button brings up a popup window with additional information regarding the Tv-show (genre, language, network where it aired, rating, date when it premiered and when it ended), the comments posted by other users (if any)...
 
-![Pop-up](/assets/for-presentation/Pop-up-pre-comment.png?raw=true "Pop-up pre-comments")
+![Pop-up](/assets/for-presentation/Tv-show-details.png?raw=true "Tv-show details pop-up")
 
 ... as well as the form for the current user to input a comment.
 
-![Comment form](/assets/for-presentation/Comment-fill-in.png?raw=true "Comment form")
+![Comment form](/assets/for-presentation/Inputing-a-comment.png?raw=true "Comment form")
 
 When the pop-up window is again accesed later, the user's comments will be displayed.
 
-![Pop-up](/assets/for-presentation/Pop-up-pre-comment.png?raw=true "Pop-up post-comments")
+![Comment form](/assets/for-presentation/Displaying-a-comment.png?raw=true "Form post-comments")
 
 The application makes API calls to the [TvMaze API](https://www.tvmaze.com/api) retrieving information about the movies. Another API, [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270), is responsible for saving likes and fetching the number of likes, saving comments and fetching a list of comments. All those functionalities are tied-up in a single codebase.
 
