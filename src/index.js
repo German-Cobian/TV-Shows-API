@@ -63,13 +63,28 @@ const getLikes = async () => {
   return likes;
 };
 
+const likeCounter = (likeObject) => {
+  const likesShowNum = likeObject[0].likes;
+  return likesShowNum;
+};
+
 // Display Collection
 
 const displayTvShows = async (collectionArray, searchString) => {
+  const likes = await getLikes();
+
   const tvShowsCategory = document.getElementById('tv-shows-category');
   tvShowsCategory.innerHTML = `<h3>${searchString}</h3>`;
   const tvShowsList = document.getElementById('tv-shows-listing');
   collectionArray.forEach((tvShow) => {
+    const likeObject = likes.filter((like) => like.item_id == tvShow.show.id);
+    let numberOfLikes = '';
+    if (likeObject.length > 0) {
+      numberOfLikes = `${likeCounter(likeObject)} likes`;
+    } else {
+      numberOfLikes = '0 likes';
+    }
+
     tvShowsList.insertAdjacentHTML('beforeend', ` 
       <div class="tv-shows-container">
         <div class="">
@@ -77,7 +92,7 @@ const displayTvShows = async (collectionArray, searchString) => {
         </div>
         <div class="name-likes">
           <h4>${tvShow.show.name}</h4>
-          <h6>Likes:</h6>
+          <h6>${numberOfLikes}</h6>
         </div>
         <div class="btn-container">
           <button data-id="${tvShow.show.id}" class="btn-details">Details</button>
@@ -93,15 +108,12 @@ const displayTvShows = async (collectionArray, searchString) => {
     const likeButton = document.querySelectorAll(`[like-id="${tvShow.show.id}"]`)[0];
     likeButton.addEventListener('click', async (e) => {
       const tvShowId = e.target.parentElement.getAttribute('like-id');
-      console.log(tvShowId);
       const status = await addLike(tvShowId);
-      console.log(status);
       const addedLikes = await getLikes();
       const likesObject = addedLikes.filter((like) => like.item_id === tvShowId);
       const numberOfLikes = `${likesObject[0].likes} likes`;
-      console.log(numberOfLikes);
       if (status === 201) {
-        const likeDisplay = likeButton.previousElementSibling.previousElementSibling.children[3];
+        const likeDisplay = likeButton.parentElement.previousElementSibling.children[1];
         likeDisplay.innerText = numberOfLikes;
       }
     });
