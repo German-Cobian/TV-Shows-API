@@ -42,6 +42,11 @@ The application makes API calls to the [TvMaze API](https://www.tvmaze.com/api) 
 * Involvement API
 
 
+## Video Demo
+
+https://www.loom.com/share/8509cfbbfe2b448f878ab19fbcc7def4
+
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
