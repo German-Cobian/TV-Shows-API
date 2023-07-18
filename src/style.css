@@ -1,0 +1,151 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: midnightblue;
+}
+
+#tv-shows-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.collection-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#tv-shows-listing {
+  display: flex;
+  flex-flow: row wrap;
+  border: 2px solid black;
+  margin-top: 2%;
+  margin-bottom: 9%;
+}
+
+.tv-shows-container {
+  margin: 20px;
+  padding: 5px;
+  width: 20%;
+  border: 2px solid black;
+}
+
+.name-likes {
+  margin-left: 10%;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 10% 5% 10%;
+}
+
+.icon-likes {
+  border-radius: 10%;
+  background-color: white;
+  color: red;
+  padding: 5px;
+}
+
+.popup-container {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  height: 100%;
+  top: 0%;
+  left: 20%;
+  right: 20%;
+  bottom: 0%;
+  z-index: 1;
+  overflow-y: scroll !important;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.tv-show-details-container {
+  padding: 5% 10% 5% 10%;
+}
+
+.show-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.details-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn-details,
+.btn-close {
+  border-radius: 15%;
+  background-color: midnightblue;
+  color: white;
+  padding: 7px;
+}
+
+.btn-comment,
+.btn-reload {
+  margin-top: 2%;
+  border-radius: 15%;
+  background-color: white;
+  border-color: blue;
+  color: blue;
+  padding: 7px;
+}
+
+.comments-font {
+  font-size: 12px;
+}
+
+.c-font {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.details-close {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+  border: 2px solid black;
+  background-color: midnightblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-content {
+  margin-right: 5%;
+}
+
+.white-text {
+  color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .tv-shows-container {
+    width: 45%;
+  }
+}
