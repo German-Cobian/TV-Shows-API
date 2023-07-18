@@ -118,7 +118,7 @@
 }
 
 .details-close {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: end;
 }

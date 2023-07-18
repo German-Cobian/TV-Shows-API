@@ -70,7 +70,7 @@ const displayTvShows = async (collectionArray, searchString) => {
   const likes = await getLikes();
 
   const tvShowsCategory = document.getElementById('tv-shows-category');
-  const capSearchString = searchString[0].toUpperCase() + searchString.substr(1);;
+  const capSearchString = searchString[0].toUpperCase() + searchString.substr(1);
   tvShowsCategory.innerHTML = `<h3>${capSearchString}</h3>`;
   const tvShowsList = document.getElementById('tv-shows-listing');
   collectionArray.forEach((tvShow) => {
