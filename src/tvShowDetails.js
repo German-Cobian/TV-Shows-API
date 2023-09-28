@@ -78,7 +78,7 @@ const displayTvShowDetails = async (tvShow) => {
   `;
   const commentsContent = document.querySelector('.comments-generate');
   commentsContent.innerHTML = `
-    <div class="">
+    <div id="comments-container" class="">
       <div>
         <h4>Comments:<span class="comments-counter"></span></h4>
         <div class="comments-data"></div>
@@ -95,14 +95,25 @@ const displayTvShowDetails = async (tvShow) => {
     </div></br>
   `;
   const submitComment = document.getElementById('comment-btn');
-  submitComment.addEventListener('click', (e) => {
+  submitComment.addEventListener('click', async (e) => {
     e.preventDefault();
     // eslint-disable-next-line prefer-destructuring
     const id = tvShow.id;
     const username = document.getElementById('name').value;
     const comment = document.getElementById('commentText').value;
-    createComment(id, username, comment);
-    document.getElementById('post-comment').reset();
+    const status = await createComment(id, username, comment);
+
+    if (status === 201) {
+      // Comment created successfully, update the comments display
+      const commentHtml = `
+        <p class="comments-font"><b>** Dated:</b> ${new Date().toLocaleString()}  <b>** By:</b> ${username}</p>
+        <p class="comments-font"><b>Comment:</b> ${comment}</p>
+        <br>
+      `;
+      const commentsContainer = document.querySelector('.comments-data');
+      commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+      document.getElementById('post-comment').reset();
+    }
   });
   const commentsData = document.querySelector('.comments-data');
   // eslint-disable-next-line prefer-destructuring
