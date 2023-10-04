@@ -99,8 +99,8 @@ const displayTvShowDetails = async (tvShow) => {
     if (status === 201) {
       // Comment created successfully, update the comments display
       const commentHtml = `
-        <p class="comments-font"><b>** Dated:</b> ${new Date().toLocaleString()}  <b>** By:</b> ${username}</p>
-        <p class="comments-font"><b>Comment:</b> ${comment}</p>
+        <p class="comments-font"><small><b>** Dated:</b> ${new Date().toLocaleString()}  <b>** By:</b> ${username}</small></p>
+        <p class="comments-font"><small><b>Comment:</b> ${comment}</small></p>
         <br>
       `;
       const commentsContainer = document.querySelector('.comments-data');
@@ -114,8 +114,8 @@ const displayTvShowDetails = async (tvShow) => {
   const comments = await getComments(id);
   comments.forEach((comment) => {
     commentsData.insertAdjacentHTML('afterend', `
-      <p class="comments-font"><b>** Dated:</b> ${comment.creation_date}  <b>** By:</b> ${comment.username}</p>
-      <p class="comments-font"><b>Comment:</b> ${comment.comment}</p>
+      <p class="comments-font"><small><b>** Dated:</b> ${comment.creation_date}  <b>** By:</b> ${comment.username}</small></p>
+      <p class="comments-font"><small><b>Comment:</b> ${comment.comment}</small></p>
       <br>
     `);
   });
