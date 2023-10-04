@@ -91,10 +91,11 @@
 }
 
 .btn-details,
-.btn-close {
+.btn-refresh {
   border-radius: 15%;
-  background-color: midnightblue;
-  color: white;
+  background-color: white;
+  border-color: midnightblue;
+  color: midnightblue;
   padding: 7px;
 }
 
@@ -103,8 +104,8 @@
   margin-top: 2%;
   border-radius: 15%;
   background-color: white;
-  border-color: blue;
-  color: blue;
+  border-color:midnightblue;
+  color: midnightblue;
   padding: 7px;
 }
 

@@ -37,13 +37,6 @@ const getComments = async (id) => {
   return comments;
 };
 
-// Close display Tv-Show details
-
-const closeTvShowDetails = () => {
-  const popup = document.getElementById('tv-show-details');
-  popup.style.display = 'none';
-};
-
 // Display details for specific Tv-Show
 
 const displayTvShowDetails = async (tvShow) => {
@@ -71,7 +64,7 @@ const displayTvShowDetails = async (tvShow) => {
         </div>
         <div class="comments-generate" ></div>
         <div class="details-close">
-          <button id="close-window" class="btn-close" >Close Window</button>
+          <button id="refresh-window" class="btn-refresh" >New Search</button>
         </div>
       </div>
     <div>
@@ -126,8 +119,13 @@ const displayTvShowDetails = async (tvShow) => {
       <br>
     `);
   });
-  const closeButton = document.getElementById('close-window');
-  closeButton.addEventListener('click', closeTvShowDetails);
+
+  // Close display Tv-Show details and go back to Home page
+
+  const refreshWindow = document.getElementById('refresh-window');
+  refreshWindow.addEventListener('click', () => {
+    window.location.href = '/';
+  });
 };
 
 export default findTvShowById;
